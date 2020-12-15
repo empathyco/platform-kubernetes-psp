@@ -1,41 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: polaris
-  namespace: kube-system
-  labels:
-    app: polaris
-spec:
-  containers:
-    - name: polaris
-      image: quay.io/fairwinds/polaris:2.0
-      ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: polaris
+  name: pause
   namespace: default
   labels:
-    app: polaris
+    app: pause
 spec:
   containers:
-    - name: polaris
-      image: quay.io/fairwinds/polaris:2.0
-      ports:
-        - containerPort: 8080
---- 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: polaris
-  namespace: org-1
-  labels:
-    app: polaris
-spec:
-  containers:
-    - name: polaris
-      image: quay.io/fairwinds/polaris:2.0
+    - name: pause
+      image: k8s.gcr.io/pause
       ports:
         - containerPort: 8080
