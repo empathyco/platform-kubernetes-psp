@@ -69,8 +69,10 @@ The examples above will be tested using two kind of PSP:
 
 ```sh
 kubectl apply -f policies/privileged-psp.yaml
+kubectl --as=system:serviceaccount:org-1:privileged -n org-1 auth can-i use psp/privileged
 
 kubectl apply -f policies/unprivileged-psp.yaml
+kubectl --as=system:serviceaccount:org-1:unprivileged -n org-1 auth can-i use psp/unprivileged
 ```
 
 ### Nginx Example
@@ -109,6 +111,7 @@ kubectl describe po test-a
 * Dockerfile 
   * Use ```USER <UID>``` instead of ```USER <name>``` 
 * Use ```kubectl --as=system:serviceaccount:org-1:privileged -n org-1 auth can-i use psp/privileged``` to check access to certain PSP
+* PSP is not enough -> Recommended link, [OPA Gatekeeper](https://kubernetes.io/blog/2019/08/06/opa-gatekeeper-policy-and-governance-for-kubernetes/)
 
 
 # References 
